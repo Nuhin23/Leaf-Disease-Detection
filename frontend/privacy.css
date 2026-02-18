@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    background: black;
+}
+
+/* Mobile container */
+.mobile-container {
+    width: 390px;
+    min-height: 100vh; /* FIX */
+    background: url("db05d446578950db4fbe64738355a323.jpg") center/cover no-repeat;
+    background-attachment: fixed; /* keeps background consistent */
+    position: relative;
+}
+
+/* Overlay */
+.overlay {
+    min-height: 100vh; /* FIX */
+    padding: 40px 25px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* FIX */
+}
+
+/* Remove scroll container control */
+.scrollable {
+    overflow-y: visible; /* FIX */
+}
+
+h3, h4 {
+    margin-top: 15px;
+}
+
+p {
+    line-height: 1.4;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Button */
+.login-btn {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #c0392b;
+}
+
+/* Signup link */
+.signup {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signup a {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}

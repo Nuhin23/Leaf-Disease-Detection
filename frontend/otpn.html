@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Your Mail</title>
+
+<link rel="stylesheet" href="otpn.css">
+</head>
+
+<body>
+
+<div class="mobile-container">
+
+    <div class="overlay">
+
+        <h2>Check your mail</h2>
+        <p class="subtitle">
+            Enter the code sent to your account to confirm.
+        </p>
+
+        <input type="text" id="otpInput" placeholder="Enter code">
+
+        <p class="hint">
+            It may take few minutes to get this code.
+        </p>
+
+        <button class="continue-btn" onclick="verifyOTP()">
+            Continue
+        </button>
+
+        <button class="alt-btn" onclick="tryAnotherWay()">
+            Try another way
+        </button>
+
+        <div class="divider">
+            <span>Or</span>
+        </div>
+
+        <div class="social">
+            <div class="circle">f</div>
+            <div class="circle">G</div>
+        </div>
+
+        <p class="signup">
+            Don’t have account?
+            <a href="signup.html">Sign up.</a>
+        </p>
+
+    </div>
+
+</div>
+
+<script src="otpn.js"></script>
+</body>
+</html>
