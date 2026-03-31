@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LeafAI{% endblock %} — LeafAI 🌿</title>
+
+    <!-- Google Fonts: Fraunces (display) + DM Sans (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!--
+        CSS is split into two files:
+          style_pages.css   → TEAMMATE: variables, navbar, footer, home, coverage
+          style_predict.css → YOU:      predict page, result panel, loading, animations
+    -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_pages.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_predict.css') }}">
+</head>
+<body>
+
+<!-- ── Navbar ─────────────────────────────────────────── -->
+<nav class="navbar">
+    <a class="nav-brand" href="/">
+        <span class="leaf-icon">🌿</span> LeafAI
+    </a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/coverage">Coverage</a>
+        <a href="/predict" class="nav-cta">Predict</a>
+    </div>
+</nav>
+
+<!-- ── Page content injected here ─────────────────────── -->
+{% block content %}{% endblock %}
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer class="footer">
+    <span>© 2026 LeafAI — Plant Disease Detection</span>
+    <span class="footer-credit">Built by Nuhin</span>
+</footer>
+
+<!--
+    JS is split into two files — load pages first, then predict.
+    script_pages.js   → TEAMMATE: tab switching, file upload, drag-drop, preview helpers
+    script_predict.js → YOU:      camera capture, loading spinner, reveal animation, confidence counter
+    script_pages.js must load first because script_predict.js calls showPreview() from it.
+-->
+<script src="{{ url_for('static', filename='js/script_pages.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script_predict.js') }}"></script>
+</body>
+</html>
