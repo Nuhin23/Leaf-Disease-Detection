@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+{% block title %}Plant Coverage{% endblock %}
+
+{% block content %}
+
+<section class="coverage-section">
+
+    <!-- Header -->
+    <div class="coverage-header">
+        <div class="coverage-badge">39 Disease Classes · 14 Plant Types</div>
+        <h2>Plants We Can Diagnose</h2>
+        <p>Our model is trained on the PlantVillage dataset. Here's every plant
+           and disease condition it recognises.</p>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <span class="stat-num">14</span>
+            <span class="stat-label">Plant Types</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-num">27</span>
+            <span class="stat-label">Disease Classes</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Healthy Classes</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-num">95%+</span>
+            <span class="stat-label">Model Accuracy</span>
+        </div>
+    </div>
+
+    <!-- Plant cards grid -->
+    <div class="plants-grid">
+
+        <!-- Apple -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🍎</span>
+                <div>
+                    <h3 class="plant-name">Apple</h3>
+                    <span class="plant-count">4 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Apple Scab</li>
+                <li class="disease-item disease">Black Rot</li>
+                <li class="disease-item disease">Cedar Apple Rust</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Blueberry -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🫐</span>
+                <div>
+                    <h3 class="plant-name">Blueberry</h3>
+                    <span class="plant-count">1 condition</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Cherry -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🍒</span>
+                <div>
+                    <h3 class="plant-name">Cherry</h3>
+                    <span class="plant-count">2 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Powdery Mildew</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Corn -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🌽</span>
+                <div>
+                    <h3 class="plant-name">Corn (Maize)</h3>
+                    <span class="plant-count">4 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Cercospora / Gray Leaf Spot</li>
+                <li class="disease-item disease">Common Rust</li>
+                <li class="disease-item disease">Northern Leaf Blight</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Grape -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🍇</span>
+                <div>
+                    <h3 class="plant-name">Grape</h3>
+                    <span class="plant-count">4 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Black Rot</li>
+                <li class="disease-item disease">Esca (Black Measles)</li>
+                <li class="disease-item disease">Leaf Blight</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Orange -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🍊</span>
+                <div>
+                    <h3 class="plant-name">Orange</h3>
+                    <span class="plant-count">1 condition</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Huanglongbing (Citrus Greening)</li>
+            </ul>
+        </div>
+
+        <!-- Peach -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🍑</span>
+                <div>
+                    <h3 class="plant-name">Peach</h3>
+                    <span class="plant-count">2 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Bacterial Spot</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Bell Pepper -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🫑</span>
+                <div>
+                    <h3 class="plant-name">Bell Pepper</h3>
+                    <span class="plant-count">2 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Bacterial Spot</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Potato -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🥔</span>
+                <div>
+                    <h3 class="plant-name">Potato</h3>
+                    <span class="plant-count">3 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Early Blight</li>
+                <li class="disease-item disease">Late Blight</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Raspberry -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🍓</span>
+                <div>
+                    <h3 class="plant-name">Raspberry</h3>
+                    <span class="plant-count">1 condition</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Soybean -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🌱</span>
+                <div>
+                    <h3 class="plant-name">Soybean</h3>
+                    <span class="plant-count">1 condition</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Squash -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🥦</span>
+                <div>
+                    <h3 class="plant-name">Squash</h3>
+                    <span class="plant-count">1 condition</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Powdery Mildew</li>
+            </ul>
+        </div>
+
+        <!-- Strawberry -->
+        <div class="plant-card">
+            <div class="plant-header">
+                <span class="plant-emoji">🍓</span>
+                <div>
+                    <h3 class="plant-name">Strawberry</h3>
+                    <span class="plant-count">2 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list">
+                <li class="disease-item disease">Leaf Scorch</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+        <!-- Tomato — largest card, spans 2 cols on wide screens -->
+        <div class="plant-card plant-card-wide">
+            <div class="plant-header">
+                <span class="plant-emoji">🍅</span>
+                <div>
+                    <h3 class="plant-name">Tomato</h3>
+                    <span class="plant-count">10 conditions</span>
+                </div>
+            </div>
+            <ul class="disease-list disease-list-grid">
+                <li class="disease-item disease">Bacterial Spot</li>
+                <li class="disease-item disease">Early Blight</li>
+                <li class="disease-item disease">Late Blight</li>
+                <li class="disease-item disease">Leaf Mold</li>
+                <li class="disease-item disease">Septoria Leaf Spot</li>
+                <li class="disease-item disease">Spider Mites</li>
+                <li class="disease-item disease">Target Spot</li>
+                <li class="disease-item disease">Yellow Leaf Curl Virus</li>
+                <li class="disease-item disease">Mosaic Virus</li>
+                <li class="disease-item healthy">Healthy</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-item">
+            <span class="legend-dot dot-disease"></span> Disease / Condition
+        </div>
+        <div class="legend-item">
+            <span class="legend-dot dot-healthy"></span> Healthy
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="coverage-cta">
+        <p>Have one of these plants? Let our model diagnose it.</p>
+        <a href="/predict" class="btn-hero">
+            Start Prediction <span class="btn-arrow">→</span>
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}
