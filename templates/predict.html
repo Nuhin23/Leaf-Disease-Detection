@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}Predict{% endblock %}
+
+{% block content %}
+
+<section class="predict-section">
+
+    <div class="predict-header">
+        <h2>Leaf Disease Prediction</h2>
+        <p>Upload an image or use your camera — we'll handle the rest.</p>
+    </div>
+
+    <div class="predict-grid">
+
+        <!-- ══════════════════════════════════════
+             LEFT PANEL: Input Form
+        ══════════════════════════════════════ -->
+        <div class="panel panel-input">
+
+            <form id="predictForm"
+                  action="{{ url_for('predict') }}"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <!-- Hidden field: stores base64 camera capture -->
+                <input type="hidden" name="captured_image" id="capturedImageData">
+
+                <!-- ── Tab switcher ── -->
+                <div class="tab-row">
+                    <button type="button" class="tab active" id="tabUpload"
+                            onclick="switchTab('upload')">📁 Upload</button>
+                    <button type="button" class="tab" id="tabCamera"
+                            onclick="switchTab('camera')">📷 Camera</button>
+                </div>
+
+                <!-- ── Upload Panel ── -->
+                <div id="uploadPanel">
+                    <label class="upload-zone" id="uploadZone" for="imageInput">
+                        <div class="upload-icon">🌿</div>
+                        <div class="upload-text">
+                            <strong>Drop image here</strong>
+                            <span>or click to browse · JPG, PNG, WEBP</span>
+                        </div>
+                        <input type="file" name="image" id="imageInput"
+                               accept="image/*" style="display:none">
+                    </label>
+                </div>
+
+                <!-- ── Camera Panel ── -->
+                <div id="cameraPanel" style="display:none">
+                    <video id="video" autoplay playsinline class="camera-view"></video>
+                    <canvas id="canvas" style="display:none"></canvas>
+                    <div class="camera-controls">
+                        <button type="button" class="btn-cam" id="startCameraBtn"
+                                onclick="startCamera()">Start Camera</button>
+                        <button type="button" class="btn-cam btn-capture" id="captureBtn"
+                                style="display:none" onclick="captureFrame()">Capture</button>
+                    </div>
+                </div>
+
+                <!-- ── Image Preview ── -->
+                <div id="previewWrap" style="display:none">
+                    <img id="previewImage" class="preview-img" alt="Preview">
+                    <button type="button" class="btn-clear" onclick="clearPreview()">✕ Clear</button>
+                </div>
+
+                <!-- ── Submit ── -->
+                <button type="submit" class="btn-predict" id="submitBtn" disabled>
+                    <span id="submitLabel">Analyze Leaf</span>
+                    <span class="btn-arrow" id="submitArrow">→</span>
+                    <!-- Spinner shown during loading (hidden by default) -->
+                    <span class="btn-spinner" id="submitSpinner" style="display:none"></span>
+                </button>
+
+            </form>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             RIGHT PANEL: Results / States
+        ══════════════════════════════════════ -->
+        <div class="panel panel-result {% if not prediction %}panel-empty{% endif %}" id="resultPanel">
+
+            <!-- ── LOADING OVERLAY (shown by JS while form submits) ── -->
+            <!--
+                This overlay sits on top of the result panel.
+                JS adds the class 'is-loading' to #resultPanel to show it.
+                It is purely CSS-driven after JS triggers it.
+            -->
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="scanner">
+                    <!-- Animated leaf SVG with scan line -->
+                    <div class="scanner-leaf">🌿</div>
+                    <div class="scan-line"></div>
+                    <div class="scan-rings">
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+                        <div class="ring ring-3"></div>
+                    </div>
+                </div>
+                <div class="loading-steps">
+                    <div class="loading-step" id="step1">
+                        <span class="step-dot"></span> Uploading image...
+                    </div>
+                    <div class="loading-step" id="step2">
+                        <span class="step-dot"></span> Preprocessing leaf...
+                    </div>
+                    <div class="loading-step" id="step3">
+                        <span class="step-dot"></span> Running AI model...
+                    </div>
+                    <div class="loading-step" id="step4">
+                        <span class="step-dot"></span> Preparing results...
+                    </div>
+                </div>
+            </div>
+
+            {% if prediction %}
+            <!-- ── RESULTS (animate in on page load) ── -->
+            <!--
+                Each child has class 'reveal-item'.
+                JS staggers their animation on DOMContentLoaded
+                so they appear one by one instead of all at once.
+            -->
+            <div class="result-content" id="resultContent">
+
+                <div class="result-img-wrap reveal-item">
+                    <img src="{{ imagepath }}" class="result-img" alt="Analyzed leaf">
+                    <!-- Scan effect overlay on the result image -->
+                    <div class="result-img-scan"></div>
+                </div>
+
+                <div class="reveal-item">
+                    <div class="result-badge">✦ Diagnosis Complete</div>
+                    <h3 class="result-disease">{{ prediction['disease_name'] }}</h3>
+                </div>
+
+                <!-- Confidence score with animated fill bar -->
+                <div class="confidence-block reveal-item">
+                    <div class="confidence-label">
+                        <span>Confidence</span>
+                        <strong id="confidenceText">0%</strong>
+                    </div>
+                    <div class="confidence-track">
+                        <div class="confidence-fill"
+                             id="confidenceFill"
+                             data-confidence="{{ confidence }}">
+                        </div>
+                    </div>
+                    <!-- Confidence tier label: changes color based on score -->
+                    <div class="confidence-tier" id="confidenceTier"></div>
+                </div>
+
+                <!-- Cause + Treatment cards -->
+                <div class="info-cards">
+                    <div class="info-card reveal-item">
+                        <div class="info-label">🔍 Cause</div>
+                        <p>{{ prediction['description'] }}</p>
+                    </div>
+                    <div class="info-card reveal-item">
+                        <div class="info-label">💊 Treatment</div>
+                        <p>{{ prediction['treatment'] }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            {% else %}
+            <!-- ── Empty state ── -->
+            <div class="empty-state">
+                <div class="empty-icon">🍃</div>
+                <p>Results will appear here after you submit a leaf image.</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
