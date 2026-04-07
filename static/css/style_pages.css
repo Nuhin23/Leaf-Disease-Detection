@@ -21,8 +21,8 @@
     --green-dim:   #2ab36a;
     --gold:        #e8c468;
     --text:        #e2ead4;
-    --muted:       #7a9080;
-    --danger:      #ff7043;
+    --muted:       #758e7b;
+    --danger:      #fb6c41;
     --radius:      16px;
     --font-display:'Fraunces', Georgia, serif;
     --font-body:   'DM Sans', sans-serif;
@@ -64,7 +64,7 @@ body {
     position:        sticky;
     top:             0;
     z-index:         100;
-    background:      rgba(10, 15, 12, 0.85);
+    background:      rgba(16, 23, 19, 0.85);
 }
 
 .nav-brand {
@@ -97,9 +97,9 @@ body {
     transition:    background 0.2s, transform 0.2s;
 }
 .nav-links .nav-cta:hover {
-    background: #5ae89a;
+    background: #58e397;
     transform:  translateY(-1px);
-    color:      #081210;
+    color:      #091412;
 }
 
 @media (max-width: 600px) {
