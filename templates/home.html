@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- ── Hero Section ───────────────────────────────────── -->
+<section class="hero">
+
+    <!-- Decorative floating leaf shapes (CSS-animated) -->
+    <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="hero-content">
+        <div class="hero-badge">AI-Powered · Deep Learning</div>
+        <h1 class="hero-title">
+            Detect Plant Disease<br>
+            <em>Before It Spreads</em>
+        </h1>
+        <p class="hero-subtitle">
+            Upload or capture a leaf photo. Our model identifies the disease,
+            explains its cause, and recommends treatment — in seconds.
+        </p>
+        <a href="/predict" class="btn-hero">
+            Analyze a Leaf
+            <span class="btn-arrow">→</span>
+        </a>
+    </div>
+
+
+    <!-- Feature cards row -->
+    <div class="feature-row">
+        <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <div class="feature-text">
+                <strong>Upload or Capture</strong>
+                <span>File upload or live camera</span>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔬</div>
+            <div class="feature-text">
+                <strong>Deep Learning Model</strong>
+                <span>Trained on 38 disease classes</span>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💊</div>
+            <div class="feature-text">
+                <strong>Treatment Advice</strong>
+                <span>Cause, cure, and confidence score</span>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+{% endblock %}
