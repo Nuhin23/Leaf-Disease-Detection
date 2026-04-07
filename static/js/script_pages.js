@@ -14,14 +14,14 @@
 
 "use strict";
 
-// ── Shorthand helpers ──────────────────────────────────────────
+// ── Shorthand helpers ────────────────────────────────────────
 const $  = id  => document.getElementById(id);
 const qs = sel => document.querySelector(sel);
 
 
-/* ================================================================
+/* ==============================================================
    1. TAB SWITCHING  (Upload / Camera)
-   ────────────────────────────────────────────────────────────────
+   ──────────────────────────────────────────────────────────────
    Toggles between the file-upload panel and the camera panel
    on the predict page. Also stops the camera when switching away.
 ================================================================ */
@@ -46,7 +46,7 @@ function switchTab(tab) {
 
 /* ================================================================
    2. FILE UPLOAD  — file picker + drag-and-drop
-   ────────────────────────────────────────────────────────────────
+   ──────────────────────────────────────────────────────────────
    Listens for file selection via in the <input type="file"> or
    a drag-and-drop onto the upload zone. Reads the file and
    calls showPreview() to display it.
@@ -63,7 +63,7 @@ if (imageInput) {
     });
 }
 
-// Drag-and-drop onto the upload  zone
+// Drag-and-drop onto the upload zone
 if (uploadZone) {
     // Highlight zone on drag-over
     uploadZone.addEventListener('dragover', e => {
@@ -74,7 +74,7 @@ if (uploadZone) {
         uploadZone.classList.remove('drag-over');
     });
 
-    // Drop: assign file to the input and show previews
+    // Drop: assign file to the input and show preview
     uploadZone.addEventListener('drop', e => {
         e.preventDefault();
         uploadZone.classList.remove('drag-over');
@@ -114,7 +114,7 @@ function showFilePreview(file) {
 ================================================================ */
 
 /**
- * showPreview(src)
+ * show Preview(src)
  * Displays the image in the preview area and enables the submit button.
  * @param {string} src - data URL or image URL
  */
@@ -127,10 +127,11 @@ function showPreview(src) {
 
 
 /**
- * clearPreview()
+ * clear Preview()
  * Hides the preview, clears all image data, disables submit button.
  * Called by the ✕ Clear button in predict.html.
  */
+
 function clearPreview() {
     $('previewImage').src          = '';
     $('capturedImageData').value   = '';
