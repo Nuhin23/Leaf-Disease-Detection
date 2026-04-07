@@ -1,6 +1,6 @@
 /* ============================================================
    LeafAI – style_pages.css
-   Owner: TEAMMATE NAME
+   Owner: Eva, Nuhin
    Covers: CSS variables, reset, navbar, footer,
            home page (hero, feature cards),
            coverage page
@@ -13,11 +13,11 @@
 ════════════════════════════════════════════════════════════ */
 
 :root {
-    --bg:          #0a0f0c;
+    --bg:          #010201;
     --surface:     #111a14;
     --card:        #162019;
-    --border:      #243028;
-    --green:       #3ddc84;
+    --border:      #253129;
+    --green:       #3ed682;
     --green-dim:   #2ab36a;
     --gold:        #e8c468;
     --text:        #e2ead4;
@@ -128,7 +128,7 @@ body {
 
 
 /* ════════════════════════════════════════════════════════════
-   HOME PAGE — Hero section + Feature cards
+   HOME PAGE — Hero section + Feature card
 ════════════════════════════════════════════════════════════ */
 
 .hero {
