@@ -6,8 +6,8 @@
 <section class="predict-section">
 
     <div class="predict-header">
-        <h2>Leaf Disease Prediction</h2>
-        <p>Upload an image or use your camera — we'll handle the rest.</p>
+        <h2>Diagnose Your Plant</h2>
+        <p>Upload or capture a clear leaf photo for instant analysis</p>
     </div>
 
     <div class="predict-grid">
@@ -30,17 +30,18 @@
                     <button type="button" class="tab active" id="tabUpload"
                             onclick="switchTab('upload')">📁 Upload</button>
                     <button type="button" class="tab" id="tabCamera"
-                            onclick="switchTab('camera')">📷 Camera</button>
+                            onclick="switchTab('camera')">🎥 Camera</button>
                 </div>
 
                 <!-- ── Upload Panel ── -->
                 <div id="uploadPanel">
                     <label class="upload-zone" id="uploadZone" for="imageInput">
-                        <div class="upload-icon">🌿</div>
+                        <div class="upload-icon">🖼️</div>
                         <div class="upload-text">
-                            <strong>Drop image here</strong>
-                            <span>or click to browse · JPG, PNG, WEBP</span>
+                            <strong>Drop your leaf image here</strong>
+                            <span>or click to browse — PNG, JPG supported</span>
                         </div>
+                        <span class="upload-size-hint">Max file size: 10 MB</span>
                         <input type="file" name="image" id="imageInput"
                                accept="image/*" style="display:none">
                     </label>
@@ -66,11 +67,18 @@
 
                 <!-- ── Submit ── -->
                 <button type="submit" class="btn-predict" id="submitBtn" disabled>
-                    <span id="submitLabel">Analyze Leaf</span>
-                    <span class="btn-arrow" id="submitArrow">→</span>
+                    <span id="submitLabel">Analyze Leaf →</span>
                     <!-- Spinner shown during loading (hidden by default) -->
                     <span class="btn-spinner" id="submitSpinner" style="display:none"></span>
                 </button>
+
+                <!-- ── Tips box ── -->
+                <div class="tips-box">
+                    <p class="tips-title">💡 Tips for best results</p>
+                    <p>• Use good lighting — avoid shadows on the leaf</p>
+                    <p>• Capture a single leaf close-up, filling the frame</p>
+                    <p>• Keep the image in focus and avoid blurriness</p>
+                </div>
 
             </form>
         </div>
@@ -166,8 +174,9 @@
             {% else %}
             <!-- ── Empty state ── -->
             <div class="empty-state">
-                <div class="empty-icon">🍃</div>
-                <p>Results will appear here after you submit a leaf image.</p>
+                <div class="empty-icon">🌿</div>
+                <h3 class="empty-title">Awaiting Your Leaf</h3>
+                <p>Upload or capture an image<br>to see the disease diagnosis here</p>
             </div>
             {% endif %}
 
